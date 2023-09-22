@@ -1,15 +1,21 @@
 pipeline {
     agent {
+        // Define your agent configuration here
         dockerfile {
             filename 'Dockerfile'
             dir 'utils/ci/'
             additionalBuildArgs '--tag=ci-cd-unfallvorschung:latest'
         }
     }
-    options {
-         skipDefaultCheckout(true)
-    }
     stages {
+        stage('Workspace Inspection') {
+            steps {
+                script {
+                    // List the contents of the workspace
+                    sh "ls -la"
+                }
+            }
+        }
         stage('Checkout') {
             steps {
                 // Clean before build
@@ -60,7 +66,7 @@ pipeline {
                 }
             }
         }
-         stage('Backend Test') {
+        stage('Backend Test') {
             steps {
                 script {
                     sh """
