@@ -1,0 +1,138 @@
+/********************************************************************************
+ * Copyright (c) 2020 in-tech GmbH
+ *               2022 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ ********************************************************************************/
+
+//-----------------------------------------------------------------------------
+/** \brief sensorFusionImpl.cpp */
+//-----------------------------------------------------------------------------
+
+#include "sensorFusionImpl.h"
+#include "common/sensorFusionQuery.h"
+#include <qglobal.h>
+
+SensorFusionErrorlessImplementation::SensorFusionErrorlessImplementation(
+        std::string componentName,
+        bool isInit,
+        int priority,
+        int offsetTime,
+        int responseTime,
+        int cycleTime,
+        StochasticsInterface *stochastics,
+        WorldInterface *world,
+        const ParameterInterface *parameters,
+        PublisherInterface * const publisher,
+        const CallbackInterface *callbacks,
+        AgentInterface *agent) :
+    UnrestrictedModelInterface(
+        componentName,
+        isInit,
+        priority,
+        offsetTime,
+        responseTime,
+        cycleTime,
+        stochastics,
+        world,
+        parameters,
+        publisher,
+        callbacks,
+        agent)
+{
+}
+
+void SensorFusionErrorlessImplementation::UpdateInput(int localLinkId, const std::shared_ptr<SignalInterface const> &data, [[maybe_unused]] int time)
+{
+    std::stringstream log;
+    log << COMPONENTNAME << " (component " << GetComponentName() << ", agent " << GetAgent()->GetId() << ", input data for local link " << localLinkId << ": ";
+    LOG(CbkLogLevel::Debug, log.str());
+
+    const std::shared_ptr<SensorDataSignal const> signal = std::dynamic_pointer_cast<SensorDataSignal const>(data);
+    if(!signal)
+    {
+        const std::string msg = COMPONENTNAME + " invalid signaltype";
+        LOG(CbkLogLevel::Debug, msg);
+        throw std::runtime_error(msg);
+    }
+
+    MergeSensorData(signal->sensorData);
+}
+
+void SensorFusionErrorlessImplementation::UpdateOutput(int localLinkId, std::shared_ptr<SignalInterface const> &data, [[maybe_unused]] int time)
+{
+    std::stringstream log;
+    log << COMPONENTNAME << " (component " << GetComponentName() << ", agent " << GetAgent()->GetId() << ", output data for local link " << localLinkId << ": ";
+    LOG(CbkLogLevel::Debug, log.str());
+
+
+    if(localLinkId == 0)
+    {
+        // to any ADAS
+        try
+        {
+            data = std::make_shared<SensorDataSignal const>(out_sensorData);
+        }
+        catch(const std::bad_alloc&)
+        {
+            const std::string msg = COMPONENTNAME + " could not instantiate signal";
+            LOG(CbkLogLevel::Debug, msg);
+            throw std::runtime_error(msg);
+        }
+    }
+    else
+    {
+        const std::string msg = COMPONENTNAME + " invalid link";
+        LOG(CbkLogLevel::Debug, msg);
+        throw std::runtime_error(msg);
+    }
+}
+
+void SensorFusionErrorlessImplementation::Trigger(int)
+{
+}
+
+void SensorFusionErrorlessImplementation::MergeSensorData(const osi3::SensorData& in_SensorData)
+{
+    out_sensorData = {};
+
+    out_sensorData.mutable_sensor_view()->MergeFrom(in_SensorData.sensor_view());
+    out_sensorData.mutable_mounting_position()->mutable_position()->set_x(0.0);
+    out_sensorData.mutable_mounting_position()->mutable_position()->set_y(0.0);
+    out_sensorData.mutable_mounting_position()->mutable_position()->set_z(0.0);
+    out_sensorData.mutable_mounting_position()->mutable_orientation()->set_yaw(0.0);
+    out_sensorData.mutable_mounting_position()->mutable_orientation()->set_pitch(0.0);
+    out_sensorData.mutable_mounting_position()->mutable_orientation()->set_roll(0.0);
+
+    for (const auto& movingObject : in_SensorData.moving_object())
+    {
+        auto existingObject = std::find_if(out_sensorData.mutable_moving_object()->begin(), out_sensorData.mutable_moving_object()->end(),
+                                           [&](const auto& object){return movingObject.header().ground_truth_id(0).value() == object.header().ground_truth_id(0).value();});
+        if (existingObject != out_sensorData.mutable_moving_object()->end())
+        {
+            existingObject->mutable_header()->mutable_sensor_id()->MergeFrom(movingObject.header().sensor_id());
+        }
+        else
+        {
+            out_sensorData.add_moving_object()->CopyFrom(SensorFusionHelperFunctions::ConvertToVehicleCoordinates(movingObject, in_SensorData.mounting_position(), *GetAgent()));
+        }
+    }
+
+    for (const auto& stationaryObject : in_SensorData.stationary_object())
+    {
+        auto existingObject = std::find_if(out_sensorData.mutable_stationary_object()->begin(), out_sensorData.mutable_stationary_object()->end(),
+                                           [&](const auto& object){return stationaryObject.header().ground_truth_id(0).value() == object.header().ground_truth_id(0).value();});
+        if (existingObject != out_sensorData.mutable_stationary_object()->end())
+        {
+            existingObject->mutable_header()->mutable_sensor_id()->MergeFrom(stationaryObject.header().sensor_id());
+        }
+        else
+        {
+            out_sensorData.add_stationary_object()->CopyFrom(SensorFusionHelperFunctions::ConvertToVehicleCoordinates(stationaryObject, in_SensorData.mounting_position()));
+        }
+    }
+}

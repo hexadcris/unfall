@@ -1,0 +1,6 @@
+breathe
+exhale
+sphinx
+sphinx-rtd-theme
+sphinx-tabs
+sphinxcontrib-spelling

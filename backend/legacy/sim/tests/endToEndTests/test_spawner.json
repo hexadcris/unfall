@@ -1,0 +1,315 @@
+{
+    "config_sets": {
+        "SpawnerPreRun_SingleRoad_SpecifiedLanes": [
+            "SpawnerPreRun_SingleRoad_SpecifiedLanes"
+        ],
+        "SpawnerPreRun_SingleRoad_SpecifiedRange": [
+            "SpawnerPreRun_SingleRoad_SpecifiedRange"
+        ],
+        "SpawnerPreRun_Highway_SingleRoad": [
+            "SpawnerPreRun_Highway_SingleRoad"
+        ],
+        "SpawnerPreRun_Highway_FullStream": [
+            "SpawnerPreRun_Highway_FullStream"
+        ],
+        "SpawnerPreRun_Highway_SimpleStream": [
+            "SpawnerPreRun_Highway_SimpleStream"
+        ],
+        "SpawnerPreRun_Highway_EntryExit": [
+            "SpawnerPreRun_Highway_EntryExit"
+        ],
+        "SpawnerPreRun_Highway_IncorrectStreamBegin": [
+            "SpawnerPreRun_Highway_IncorrectStreamBegin"
+        ],
+        "SpawnerPreRun_Highway_IncorrectStreamMid": [
+            "SpawnerPreRun_Highway_IncorrectStreamMid"
+        ],
+        "SpawnerPreRun_Highway_RoadOverlap": [
+            "SpawnerPreRun_Highway_RoadOverlap"
+        ],
+        "SpawnerRuntime_Highway_SingleRoad": [
+            "SpawnerRuntime_Highway_SingleRoad"
+        ],
+        "SpawnerRuntime_Highway_MultipleRoads": [
+            "SpawnerRuntime_Highway_MultipleRoads"
+        ],
+        "SpawnerRuntime_SingleRoad_SpecifiedLanes": [
+            "SpawnerRuntime_SingleRoad_SpecifiedLanes"
+        ]
+    },
+    "tests": {
+        "SpawnerPreRun_SingleRoad_SpecifiedLanes": {
+            "config_sets": [
+                "SpawnerPreRun_SingleRoad_SpecifiedLanes"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns only on spefied lanes of correct type",
+            "queries": [
+                "count(AgentId | Lane == -3) > 0",
+                "count(AgentId | Lane == -4) > 0",
+                "count(AgentId | Lane != -3 and Lane != -4) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_SingleRoad_FullRange": {
+            "config_sets": [
+                "SpawnerPreRun_SingleRoad_SpecifiedLanes"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns on full range if unspecified",
+            "queries": [
+                "count(AgentId | PositionRoute < 200) > 0",
+                "count(AgentId | PositionRoute > 800) > 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_SingleRoad_AllLanes": {
+            "config_sets": [
+                "SpawnerPreRun_SingleRoad_SpecifiedRange"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns on all valid lanes if unspecified",
+            "queries": [
+                "count(AgentId | Lane == 5) == 0",
+                "count(AgentId | Lane == 4) > 0",
+                "count(AgentId | Lane == 3) > 0",
+                "count(AgentId | Lane == 2) > 0",
+                "count(AgentId | Lane == 1) == 0",
+                "count(AgentId | Lane == -1) == 0",
+                "count(AgentId | Lane == -2) > 0",
+                "count(AgentId | Lane == -3) > 0",
+                "count(AgentId | Lane == -4) > 0",
+                "count(AgentId | Lane == -5) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_SingleRoad_DrivingDirection": {
+            "config_sets": [
+                "SpawnerPreRun_SingleRoad_SpecifiedRange"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns agents with correct driving direction",
+            "queries": [
+                "count(AgentId | Lane < 0) > 0",
+                "count(AgentId | Lane > 0) > 0",
+                "count(AgentId | Lane < 0 and not(YawAngle ~= 1.5707963268)) == 0",
+                "count(AgentId | Lane > 0 and not(YawAngle ~= -1.5707963268)) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_SingleRoad_SpecifiedRange": {
+            "config_sets": [
+                "SpawnerPreRun_SingleRoad_SpecifiedRange"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns on specified range",
+            "queries": [
+                "count(AgentId | PositionRoute < 200 and Timestep == 0) == 0",
+                "count(AgentId | PositionRoute > 800 and Timestep == 0) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_Highway_SingleRoad": {
+            "config_sets": [
+                "SpawnerPreRun_Highway_SingleRoad"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns on specified road only",
+            "queries": [
+                "count(AgentId | Road == 4) > 0",
+                "count(AgentId | Road == 1) == 0",
+                "count(AgentId | Road == 14) == 0",
+                "count(AgentId | Road == 45) == 0",
+                "count(AgentId | Road == 5) == 0",
+                "count(AgentId | Road == 13) == 0",
+                "count(AgentId | Road == 3) == 0",
+                "count(AgentId | Road == 2) == 0",
+                "count(AgentId | Road == 25) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_Highway_FullStream": {
+            "config_sets": [
+                "SpawnerPreRun_Highway_FullStream"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns on specified roads",
+            "queries": [
+                "count(AgentId | Road == 1) > 0",
+                "count(AgentId | Road == 4) > 0",
+                "count(AgentId | Road == 5) > 0",
+                "count(AgentId | Road != 1 and Road != 14 and Road != 4 and Road != 45 and Road != 5) == 0",
+                "count(AgentId | Road == 1 and (Lane == -1 or Lane == -5)) == 0",
+                "count(AgentId | Road == 1 and (Lane == -1 or Lane == -5)) == 0",
+                "count(AgentId | Road == 4 and Lane == -1) == 0",
+                "count(AgentId | Road == 1 and (Lane == -1 or Lane == -6)) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_Highway_SimpleStream": {
+            "config_sets": [
+                "SpawnerPreRun_Highway_SimpleStream"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns on specified roads",
+            "queries": [
+                "count(AgentId | Road == 1) > 0",
+                "count(AgentId | Road == 4) > 0",
+                "count(AgentId | Road == 5) > 0",
+                "count(AgentId | Road != 1 and Road != 14 and Road != 4 and Road != 45 and Road != 5) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_Highway_EntryExit": {
+            "config_sets": [
+                "SpawnerPreRun_Highway_EntryExit"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns on specified roads",
+            "queries": [
+                "count(AgentId | Road == 1) > 0",
+                "count(AgentId | Road == 3) > 0",
+                "count(AgentId | Road == 2) > 0",
+                "count(AgentId | Road == 5) > 0",
+                "count(AgentId | Road == 14 or Road == 4 or Road == 45) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_Highway_IncorrectStreamBegin": {
+            "config_sets": [
+                "SpawnerPreRun_Highway_IncorrectStreamBegin"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns until stream is discontinued (which means no agents are spawned at all in this setup)",
+            "queries": [
+                "count(AgentId) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_Highway_IncorrectStreamMid": {
+            "config_sets": [
+                "SpawnerPreRun_Highway_IncorrectStreamMid"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns until stream is discontinued",
+            "queries": [
+                "count(AgentId | Road == 1) > 0",
+                "count(AgentId | Road == 4) > 0",
+                "count(AgentId | Road != 1 and Road != 14 and Road != 4) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_Highway_RoadOverlap": {
+            "config_sets": [
+                "SpawnerPreRun_Highway_RoadOverlap"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner spawns on all specified roads and lanes at road overlap",
+            "queries": [
+                "count(AgentId | Road == 1 and Lane == -2) > 0",
+                "count(AgentId | Road == 1 and Lane == -3) > 0",
+                "count(AgentId | Road == 1 and Lane == -4) > 0",
+                "count(AgentId | Road == 1 and Lane == -5) > 0",
+                "count(AgentId | Road == 4) > 0",
+                "count(AgentId | Road == 3) > 0",
+                "count(AgentId | Road != 1 and Road != 14 and Road != 4 and Road != 13 and Road != 3) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerPreRun_SingleRoad_RightLaneOnly": {
+            "config_sets": [
+                "SpawnerPreRun_SingleRoad_SpecifiedRange"
+            ],
+            "duration": 0.0,
+            "invocations": 10,
+            "description": "Spawner respects RightLaneOnly tag",
+            "queries": [
+                "count(AgentId | (Lane != -4 and Lane != 4) and AgentTypeName == 'TruckAgent') == 0",
+                "count(AgentId | (Lane != -4 and Lane != 4) and AgentTypeName == 'BusAgent') == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerRuntime_SingleRoad_SpecifiedLanes": {
+            "config_sets": [
+                "SpawnerRuntime_SingleRoad_SpecifiedLanes"
+            ],
+            "duration": 30.0,
+            "invocations": 10,
+            "description": "Spawner spawns on specified lanes",
+            "queries": [
+                "count(AgentId | Timestep == {first} and Lane == 4) > 0",
+                "count(AgentId | Timestep == {first} and Lane == 3) > 0",
+                "count(AgentId | Timestep == {first} and Lane == -3) > 0",
+                "count(AgentId | Timestep == {first} and Lane == -4) > 0",
+                "count(AgentId | Timestep == {first} and Lane != 4 and Lane != 3 and Lane != -3 and Lane != -4) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerRuntime_Highway_SingleRoad": {
+            "config_sets": [
+                "SpawnerRuntime_Highway_SingleRoad"
+            ],
+            "duration": 30.0,
+            "invocations": 10,
+            "description": "Spawner spawns on specified road only",
+            "queries": [
+                "count(AgentId | Timestep == {first} and Road == 4) > 0",
+                "count(AgentId | Timestep == {first} and Road != 4) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerRuntime_SingleRoad_DrivingDirection": {
+            "config_sets": [
+                "SpawnerRuntime_SingleRoad_SpecifiedLanes"
+            ],
+            "duration": 30.0,
+            "invocations": 10,
+            "description": "Spawner spawns agents with correct driving direction",
+            "queries": [
+                "count(AgentId | Timestep == {first} and Lane < 0) > 0",
+                "count(AgentId | Timestep == {first} and Lane > 0) > 0",
+                "count(AgentId | Timestep == {first} and Lane < 0 and not(YawAngle ~= 1.5707963268)) == 0",
+                "count(AgentId | Timestep == {first} and Lane > 0 and not(YawAngle ~= -1.5707963268)) == 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerRuntime_Highway_MultipleRoads": {
+            "config_sets": [
+                "SpawnerRuntime_Highway_MultipleRoads"
+            ],
+            "duration": 30.0,
+            "invocations": 10,
+            "description": "Spawner spawns on specified roads",
+            "queries": [
+                "count(AgentId | Timestep == {first} and Road == 1) > 0",
+                "count(AgentId | Timestep == {first} and Road == 5) > 0"
+            ],
+            "success_rate": 1.0
+        },
+        "SpawnerRuntime_SingleRoad_RightLaneOnly": {
+            "config_sets": [
+                "SpawnerRuntime_SingleRoad_SpecifiedLanes"
+            ],
+            "duration": 30.0,
+            "invocations": 10,
+            "description": "Spawner respects RightLaneOnly tag",
+            "queries": [
+                "count(AgentId | Timestep == {first} and (Lane != -4 and Lane != 4) and AgentTypeName == 'TruckAgent') == 0",
+                "count(AgentId | Timestep == {first} and (Lane != -4 and Lane != 4) and AgentTypeName == 'BusAgent') == 0"
+            ],
+            "success_rate": 1.0
+        }
+    }
+}

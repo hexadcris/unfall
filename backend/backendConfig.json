@@ -1,0 +1,9 @@
+{
+    "PATH_OPENPASS_CORE":"<USER_HOME_PATH>/opSimulation/bin/core",
+    "OPSIMULATION_EXE": "opSimulation.exe",
+    "OPSIMULATION_MANAGER_XML": "opSimulationManager.xml",
+    "OPSIMULATION_MANAGER_EXE": "opSimulationManager.exe",
+    "WORKSPACE": "<USER_HOME_PATH>/Documents/workspaces/opGUI-workspace1",
+    "BACKEND_PORT":8848,
+    "BACKEND_IP":"127.0.0.1" 
+}

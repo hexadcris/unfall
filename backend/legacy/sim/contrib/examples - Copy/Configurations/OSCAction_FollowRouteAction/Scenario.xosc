@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<OpenSCENARIO>
+  <FileHeader revMajor="1" revMinor="0" date="2020-10-08T16:10:00" description="AFDM_TJunction" author="BMW AG"/>
+  <ParameterDeclarations>
+    <ParameterDeclaration name="OP_OSC_SchemaVersion" parameterType="string" value="0.4.0"/>
+  </ParameterDeclarations>
+  <CatalogLocations>
+    <VehicleCatalog>
+      <Directory path="VehicleModelsCatalog.xosc"/>
+    </VehicleCatalog>
+    <PedestrianCatalog>
+      <Directory path="PedestrianModelsCatalog.xosc"/>
+    </PedestrianCatalog>
+    <ControllerCatalog>
+      <Directory path=""/>
+    </ControllerCatalog>
+    <ManeuverCatalog>
+      <Directory path=""/>
+    </ManeuverCatalog>
+    <MiscObjectCatalog>
+      <Directory path=""/>
+    </MiscObjectCatalog>
+    <EnvironmentCatalog>
+      <Directory path=""/>
+    </EnvironmentCatalog>
+    <TrajectoryCatalog>
+      <Directory path=""/>
+    </TrajectoryCatalog>
+    <RouteCatalog>
+      <Directory path=""/>
+    </RouteCatalog>
+  </CatalogLocations>
+  <RoadNetwork>
+    <LogicFile filepath="SceneryConfiguration.xodr"/>
+    <SceneGraphFile filepath=""/>
+  </RoadNetwork>
+  <Entities>
+    <ScenarioObject name="Ego">
+      <CatalogReference catalogName="ProfilesCatalog.xml" entryName="MiddleClassCarAgent"/>
+    </ScenarioObject>
+    <EntitySelection name="ScenarioAgents">
+      <Members/>
+    </EntitySelection>
+  </Entities>
+  <Storyboard>
+    <Init>
+      <Actions>
+		<Private entityRef="Ego">
+          <PrivateAction>
+            <TeleportAction>
+              <Position>
+                <LanePosition roadId="1472558076" laneId="-1" offset="0.0" s="200.0"/>
+              </Position>
+            </TeleportAction>
+          </PrivateAction>
+		  <PrivateAction>
+			  <RoutingAction>
+				  <AssignRouteAction>
+					<Route>
+					  <Waypoint>
+						<Position>
+						  <RoadPosition roadId="1472558076" t="-1.0" s="230"/>
+						</Position>
+					  </Waypoint>
+					  <Waypoint>
+						<Position>
+						  <RoadPosition roadId="3083973" t="0" s="8.5"/>
+						</Position>
+					  </Waypoint>
+					  <Waypoint>
+						<Position>
+						  <RoadPosition roadId="2015840166" t="-0.2" s="100"/>
+						</Position>
+					  </Waypoint>
+					</Route>
+				  </AssignRouteAction>
+			</RoutingAction>
+			</PrivateAction>
+        </Private>
+      </Actions>
+    </Init>
+    <Story/>
+	<StopTrigger>
+      <ConditionGroup>
+        <Condition name="EndTime" delay="0" conditionEdge="rising">
+          <ByValueCondition>
+            <SimulationTimeCondition value="33.0" rule="greaterThan"/>
+          </ByValueCondition>
+        </Condition>
+      </ConditionGroup>
+    </StopTrigger>
+  </Storyboard>
+</OpenSCENARIO>

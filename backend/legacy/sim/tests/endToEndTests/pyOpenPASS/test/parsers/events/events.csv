@@ -1,0 +1,4 @@
+RunId,Timestep,Source,Name,AgentId,IsTriggering,IsAffected,Key,Value
+0,0,OpenSCENARIO,StateChangeStory/Act1/StateChangeSequenceA/StateChangeManeuverA/StateChangeEventA,0,False,True,,
+0,0,Dynamics_TrajectoryFollower,Dynamics_TrajectoryFollower,0,True,False,ComponentState,Acting
+0,0,Dynamics_TrajectoryFollower,Dynamics_TrajectoryFollower,0,True,False,InternalState,TrajectoryFollowerActivated

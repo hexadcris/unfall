@@ -1,0 +1,14 @@
+{
+  "name": "opgui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "win-install": ".\\installation\\install-windows.bat",
+    "deb-install": "./installation/install-debian.sh",
+    "deb-launch": "cd $HOME/opSimulation/bin/core/ && $HOME/opgui/backend/build/OPGUICore",
+    "win-launch": "cd backend && Run-backend.bat"
+  }
+}

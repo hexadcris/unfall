@@ -1,0 +1,15 @@
+venv/*
+__pychache__/*
+.idea
+.pytest_cache
+*.pyc
+*.xml
+**/.ipynb_checkpoints/*
+
+########################################
+#   Potentially Generated Artifacts    #
+########################################
+**/*.json
+**/*.html
+**/*.css
+**/*result_*.xml 

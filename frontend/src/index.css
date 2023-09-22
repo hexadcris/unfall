@@ -1,0 +1,243 @@
+/*
+ * Copyright (c) 2023 Hexad GmbH
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-2.0.
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ */
+
+@import url('styles/icons.css');
+
+:root {
+    --main-color: #1D2D53;
+    --main-contrast: #53431D;
+    --accent-1: #ADB9CE;
+    --accent-2: #FFF5CC;
+    --accent-3: #878787;
+
+    /* Real Variables */
+    --primary-white: #FFFFFF;
+    --primary-black: #000000;
+    --grey-dark: #808285;
+    --grey-main: #BEBEBE;
+    --grey-medium: #D7D7D7;
+    --grey-background: #EAEAEA;
+    --grey-light: #F4F4F4;
+    --ink-dark: #131313;
+    --ink-medium: #717171;
+    --success-dark: #1B5E20;
+    --success-main: #2E7D32;
+    --success-light: #E3EFE4;
+    --warning-dark: #E65100;
+    --warning-main: #ED6C02;
+    --warning-light: #F5EBE3;
+    --error-dark: #C62828;
+    --error-main: #D32F2F;
+    --error-light: #F3DBDB;
+    --nav-height: 80px;
+}
+
+#root {
+    height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    outline: none !important;
+}
+
+html {
+    font-family: 'Roboto'
+}
+
+#root-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #FBFBFB;
+
+}
+
+.side-window {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    padding-top: 80px;
+    background-color: var(--grey-background);
+}
+
+.side-window::before {
+    content: "";
+    background-image: url('assets/open-pass-logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+#gui-sidebar {
+    border-right-style: solid;
+    border-width: thin;
+    background: var(--main-color);
+    width: 11%;
+    min-width: 14rem;
+    padding-top: calc(var(--nav-height) - 5px);
+    position: relative;
+    z-index: 1;
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    color: var(--primary-white);
+    border-top: 1px solid;
+}
+
+.sidenav__config {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 4.5rem;
+    width: 100%;
+    background: var(--accent-1);
+    align-items: center;
+}
+
+.sidenav__docs {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--accent-1);
+    border-top: 1px solid var(--accent-1);
+    align-items: center;
+    justify-content: center;
+    padding-left: .8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    background: var(--primary-white);
+    height: var(--nav-height);
+    border-bottom: 1px solid var(--grey-main);
+    z-index: 2;
+}
+
+.dotted {
+    border-left-style: dotted;
+}
+
+#gui-logo {
+    width: 11%;
+    flex: 0 0 auto;
+}
+
+#gui-main-window {
+    width: 89.5%;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        background: #ADB9CE;
+    }
+
+    25% {
+        background: #ADB9CE;
+    }
+
+    50% {
+        background: #ADB9CE;
+    }
+
+    75% {
+        background: #ADB9CE;
+    }
+
+    85% {
+        background: #ADB9CE;
+    }
+
+    100% {
+        background: #ADB9CE;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        background: #1D2D5310;
+    }
+
+    25% {
+        background: #1D2D5330;
+    }
+
+    50% {
+        background: #1D2D5350;
+    }
+
+    75% {
+        background: #1D2D5370;
+    }
+
+    100% {
+        background: #1D2D53;
+    }
+
+}
+
+.side-window::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.side-window {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+}
+
+.hideAccordion {
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+
+/* .droppable-zone::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+} */
+
+/* Track */
+/* .droppable-zone::-webkit-scrollbar-track {
+    width: 1px;
+    background: #f1f1f1;
+    border-radius: 5px;
+} */
+
+/* Handle */
+/* .droppable-zone::-webkit-scrollbar-thumb {
+    width: 1px;
+    background: #888;
+    border-radius: 5px;
+} */
+
+/* Handle on hover */
+/* .droppable-zone::-webkit-scrollbar-thumb:hover {
+    background: #555;
+
+} */

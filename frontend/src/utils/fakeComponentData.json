@@ -1,0 +1,1906 @@
+[
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Longitudinal Signal",
+                "type": "LongitudinalSignal",
+                "unit": ""
+            }
+        ],
+        "library": "ActionLongitudinalDriver",
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "ActionLongitudinalDriver",
+        "type": "Action"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Secondary Driver Tasks",
+                "type": "SecondaryDriverTasksSignal",
+                "unit": ""
+            }
+        ],
+        "library": "ActionSecondaryDriverTasks",
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "ActionSecondaryDriverTasks",
+        "type": "Action"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "InertiaForce",
+                "type": "VectorDouble",
+                "unit": "N"
+            }
+        ],
+        "library": "Action_Test",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "VerticalForce",
+                "type": "VectorDouble",
+                "unit": "N"
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "Spring coefficient",
+                "type": "double",
+                "unit": "",
+                "value": "1200000"
+            },
+            {
+                "id": 1,
+                "title": "Damper coefficient",
+                "type": "double",
+                "unit": "",
+                "value": "12000"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Action_Test",
+        "type": "Action"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Dynamics Signal",
+                "type": "DynamicsSignal",
+                "unit": ""
+            }
+        ],
+        "library": "AgentUpdater",
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "AgentUpdater",
+        "type": "Action"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Desired trajectory",
+                "type": "TrajectoryEvent",
+                "unit": ""
+            }
+        ],
+        "library": "Algorithm_Test",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Control",
+                "type": "ControlData",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "Driver aggressiveness",
+                "type": "double",
+                "unit": "",
+                "value": "1.0"
+            },
+            {
+                "id": 1,
+                "title": "Max. engine power",
+                "type": "double",
+                "unit": "W",
+                "value": "100000"
+            },
+            {
+                "id": 2,
+                "title": "Min. brake torque",
+                "type": "int",
+                "unit": "Nm",
+                "value": "100"
+            },
+            {
+                "id": 3,
+                "title": "Kp of the pedals PID control",
+                "type": "bool",
+                "unit": "",
+                "value": "true"
+            },
+            {
+                "id": 4,
+                "title": "Ki of the pedals PID control",
+                "type": "string",
+                "unit": "",
+                "value": "string param"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Algorithm_Test",
+        "type": "AlgorithmTest"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Camera",
+                "type": "SensorDataSignal",
+                "unit": ""
+            }
+        ],
+        "library": "AEB",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Acceleration Signal",
+                "type": "AccelerationSignal",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "CollisionDetectionLongitudinalBoundary",
+                "type": "double",
+                "unit": "m",
+                "value": "4.0"
+            },
+            {
+                "id": 1,
+                "title": "CollisionDetectionLateralBoundary",
+                "type": "double",
+                "unit": "m",
+                "value": "1.5"
+            },
+            {
+                "id": 2,
+                "title": "TTC",
+                "type": "double",
+                "unit": "s",
+                "value": "2"
+            },
+            {
+                "id": 3,
+                "title": "Acceleration",
+                "type": "double",
+                "unit": "m/s^2",
+                "value": "-3.0"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "AEB",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "collisionOccurred",
+                "type": "bool",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "prio1AssistActivity",
+                "type": "bool",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 2,
+                "title": "prio2AssistActivity",
+                "type": "bool",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 3,
+                "title": "prio3AssistActivity",
+                "type": "bool",
+                "unit": ""
+            }
+        ],
+        "library": "Algorithm_ECU",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "index",
+                "type": "int",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Algorithm_ECU",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Lateral Signal",
+                "type": "LateralSignal",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 100,
+                "title": "Vehicle Parameters",
+                "type": "ParametersVehicleSignal",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 101,
+                "title": "Driver Signal",
+                "type": "SensorDriverSignal",
+                "unit": ""
+            }
+        ],
+        "library": "AlgorithmLateral",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Steering Signal",
+                "type": "SteeringSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "AlgorithmLateral",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Acceleration Signal",
+                "type": "AccelerationSignal",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "Vehicle Parameters",
+                "type": "ParametersVehicleSignal",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 3,
+                "title": "Driver Signal",
+                "type": "SensorDriverSignal",
+                "unit": ""
+            }
+        ],
+        "library": "AlgorithmLongitudinal",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Longitudinal Signal",
+                "type": "LongitudinalSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "AlgorithmLongitudinal",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Desired trajectory",
+                "type": "TrajectoryEvent",
+                "unit": ""
+            }
+        ],
+        "library": "Algorithm_RouteControl",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Control",
+                "type": "ControlData",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "Driver aggressiveness",
+                "type": "double",
+                "unit": "",
+                "value": "1.0"
+            },
+            {
+                "id": 1,
+                "title": "Max. engine power",
+                "type": "double",
+                "unit": "W",
+                "value": "100000"
+            },
+            {
+                "id": 2,
+                "title": "Min. brake torque",
+                "type": "double",
+                "unit": "Nm",
+                "value": "-10000"
+            },
+            {
+                "id": 3,
+                "title": "Kp of the pedals PID control",
+                "type": "double",
+                "unit": "",
+                "value": "-0.5"
+            },
+            {
+                "id": 4,
+                "title": "Ki of the pedals PID control",
+                "type": "double",
+                "unit": "",
+                "value": "-0.4"
+            },
+            {
+                "id": 5,
+                "title": "Kd of the pedals PID control",
+                "type": "double",
+                "unit": "",
+                "value": "0.0"
+            },
+            {
+                "id": 6,
+                "title": "Kp of the steering PID control",
+                "type": "double",
+                "unit": "",
+                "value": "-18.0"
+            },
+            {
+                "id": 7,
+                "title": "Ki of the steering PID control",
+                "type": "double",
+                "unit": "",
+                "value": "-0.6"
+            },
+            {
+                "id": 8,
+                "title": "Kd of the steering PID control",
+                "type": "double",
+                "unit": "",
+                "value": "0.0"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Algorithm_RouteControl",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Brake Assist active",
+                "type": "bool",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "Lane Assist active",
+                "type": "bool",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 2,
+                "title": "Evasive Steering Assist active",
+                "type": "bool",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 3,
+                "title": "collisionOccured",
+                "type": "bool",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 4,
+                "title": "assistControl",
+                "type": "ControlData",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 5,
+                "title": "driverControl",
+                "type": "ControlData",
+                "unit": ""
+            }
+        ],
+        "library": "Algorithm_Selector",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Control",
+                "type": "ControlData",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Algorithm_Selector",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Index",
+                "type": "int",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "DriverControl",
+                "type": "ControlData",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 2,
+                "title": "Prio1Control",
+                "type": "ControlData",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 3,
+                "title": "Prio2Control",
+                "type": "ControlData",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 4,
+                "title": "Prio3Control",
+                "type": "ControlData",
+                "unit": ""
+            }
+        ],
+        "library": "Algorithm_Switch",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Control",
+                "type": "ControlData",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Algorithm_Switch",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Desired trajectory",
+                "type": "TrajectoryEvent",
+                "unit": ""
+            }
+        ],
+        "library": "Algorithm_Test",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Control",
+                "type": "ControlData",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "Driver aggressiveness",
+                "type": "double",
+                "unit": "",
+                "value": "1.0"
+            },
+            {
+                "id": 1,
+                "title": "Max. engine power",
+                "type": "double",
+                "unit": "W",
+                "value": "100000"
+            },
+            {
+                "id": 2,
+                "title": "Min. brake torque",
+                "type": "int",
+                "unit": "Nm",
+                "value": "100"
+            },
+            {
+                "id": 3,
+                "title": "Kp of the pedals PID control",
+                "type": "bool",
+                "unit": "",
+                "value": "true"
+            },
+            {
+                "id": 4,
+                "title": "Ki of the pedals PID control",
+                "type": "string",
+                "unit": "",
+                "value": "string param"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Algorithm_Test",
+        "type": "AlgorithmTest"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "PositionX",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "PositionY",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 2,
+                "title": "YawAngle",
+                "type": "double",
+                "unit": "rad"
+            },
+            {
+                "cardinality": 1,
+                "id": 3,
+                "title": "Velocity",
+                "type": "double",
+                "unit": "m/s"
+            },
+            {
+                "cardinality": 1,
+                "id": 100,
+                "title": "Trajectory",
+                "type": "Trajectory",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 101,
+                "title": "Weight",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 102,
+                "title": "Wheelbase",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 103,
+                "title": "DistanceFrontAxleToCOG",
+                "type": "double",
+                "unit": ""
+            }
+        ],
+        "library": "Algorithm_TrajectoryFollower",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Required_GasPedal",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "id": 1,
+                "title": "Required_BrakePedal",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "id": 2,
+                "title": "Required_FrontWheelAngle",
+                "type": "double",
+                "unit": "rad"
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "TireCoefficient1",
+                "type": "double",
+                "unit": "",
+                "value": "50.0"
+            },
+            {
+                "id": 1,
+                "title": "TireCoefficient2",
+                "type": "double",
+                "unit": "",
+                "value": "50.0"
+            },
+            {
+                "id": 2,
+                "title": "FrontWheelAngleLimit",
+                "type": "double",
+                "unit": "",
+                "value": "0.44"
+            },
+            {
+                "id": 3,
+                "title": "Brake_P",
+                "type": "double",
+                "unit": "",
+                "value": "3.7"
+            },
+            {
+                "id": 4,
+                "title": "Brake_I",
+                "type": "double",
+                "unit": "",
+                "value": "0.005"
+            },
+            {
+                "id": 5,
+                "title": "Brake_D",
+                "type": "double",
+                "unit": "",
+                "value": "2.0"
+            },
+            {
+                "id": 6,
+                "title": "Gas_P",
+                "type": "double",
+                "unit": "",
+                "value": "3.4"
+            },
+            {
+                "id": 7,
+                "title": "Gas_I",
+                "type": "double",
+                "unit": "",
+                "value": "0.05"
+            },
+            {
+                "id": 8,
+                "title": "Gas_D",
+                "type": "double",
+                "unit": "",
+                "value": "1.0"
+            },
+            {
+                "id": 9,
+                "title": "LookAheadTime",
+                "type": "double",
+                "unit": "",
+                "value": "0.2"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Algorithm_TrajectoryFollower",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Driver Signal",
+                "type": "SensorDriverSignal",
+                "unit": ""
+            }
+        ],
+        "library": "AlgorithmAgentFollowingDriverModel",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Lateral Signal",
+                "type": "LateralSignal",
+                "unit": ""
+            },
+            {
+                "id": 1,
+                "title": "Secondary Driver Tasks",
+                "type": "SecondaryDriverTasksSignal",
+                "unit": ""
+            },
+            {
+                "id": 2,
+                "title": "Acceleration Signal",
+                "type": "AccelerationSignal",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "VelocityWish",
+                "type": "double",
+                "unit": "m/s",
+                "value": "15.0"
+            },
+            {
+                "id": 1,
+                "title": "Delta",
+                "type": "double",
+                "unit": "",
+                "value": "4.0"
+            },
+            {
+                "id": 2,
+                "title": "TGabWish",
+                "type": "double",
+                "unit": "s",
+                "value": "1.5"
+            },
+            {
+                "id": 3,
+                "title": "MinDistance",
+                "type": "double",
+                "unit": "m",
+                "value": "2"
+            },
+            {
+                "id": 4,
+                "title": "MaxAcceleration",
+                "type": "double",
+                "unit": "m/s^2",
+                "value": "2"
+            },
+            {
+                "id": 5,
+                "title": "MaxDeceleration",
+                "type": "double",
+                "unit": "m/s^2",
+                "value": "2"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "AlgorithmAgentFollowingDriverModel",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "AgentCompToCompCtrlSignal",
+                "type": "AgentCompToCompCtrlSignal",
+                "unit": ""
+            }
+        ],
+        "library": "ComponentController",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "CompCtrlToAgentCompSignal",
+                "type": "CompCtrlToAgentCompSignal",
+                "unit": ""
+            },
+            {
+                "id": 1,
+                "title": "CompCtrlToDriverCompSignal",
+                "type": "CompCtrlToDriverCompSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "ComponentController",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "InertiaForce",
+                "type": "VectorDouble",
+                "unit": "N"
+            }
+        ],
+        "library": "Dynamics_Chassis",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "VerticalForce",
+                "type": "VectorDouble",
+                "unit": "N"
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "Spring coefficient",
+                "type": "double",
+                "unit": "",
+                "value": "1200000"
+            },
+            {
+                "id": 1,
+                "title": "Damper coefficient",
+                "type": "double",
+                "unit": "",
+                "value": "12000"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Dynamics_Chassis",
+        "type": "Action"
+    },
+    {
+        "id": 0,
+        "library": "DynamicsCollision",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Dynamics Signal",
+                "type": "DynamicsSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "DynamicsCollision",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "CollisionOccured",
+                "type": "bool",
+                "unit": ""
+            }
+        ],
+        "library": "Dynamics_CollisionPCM",
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Dynamics_CollisionPCM",
+        "type": "Action"
+    },
+    {
+        "id": 0,
+        "library": "DynamicsCollisionPostCrash",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Dynamics Signal",
+                "type": "DynamicsSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "DynamicsCollisionPostCrash",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Desired trajectory",
+                "type": "TrajectoryEvent",
+                "unit": ""
+            }
+        ],
+        "library": "Dynamics_CopyTrajectory",
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Dynamics_CopyTrajectory",
+        "type": "Action"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Longitudinal Signal",
+                "type": "LongitudinalSignal",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "Steering Signal",
+                "type": "SteeringSignal",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 100,
+                "title": "Vehicle Parameters",
+                "type": "ParametersVehicleSignal",
+                "unit": ""
+            }
+        ],
+        "library": "DynamicsRegularDriving",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Dynamics Signal",
+                "type": "DynamicsSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "DynamicsRegularDriving",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Longitudinal Signal",
+                "type": "LongitudinalSignal",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "Steering Signal",
+                "type": "SteeringSignal",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 100,
+                "title": "Vehicle Parameters",
+                "type": "ParametersVehicleSignal",
+                "unit": ""
+            }
+        ],
+        "library": "DynamicsRegularTwoTrack",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Dynamics Signal",
+                "type": "DynamicsSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "DynamicsRegularTwoTrack",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Lateral Signal",
+                "type": "LateralSignal",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "Acceleration Signal",
+                "type": "AccelerationSignal",
+                "unit": ""
+            }
+        ],
+        "library": "Dynamics_TrajectoryFollower",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Dynamics Signal",
+                "type": "DynamicsSignal",
+                "unit": ""
+            },
+            {
+                "id": 1,
+                "title": "AgentCompToCompCtrlSignal",
+                "type": "AgentCompToCompCtrlSignal",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "TrajectoryFile",
+                "type": "string",
+                "unit": "",
+                "value": "Trajectory.xml"
+            },
+            {
+                "id": 1,
+                "title": "AutomaticDeactivation",
+                "type": "bool",
+                "unit": "",
+                "value": "1"
+            },
+            {
+                "id": 2,
+                "title": "EnforceTrajectory",
+                "type": "bool",
+                "unit": "",
+                "value": "1"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Dynamics_TrajectoryFollower",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Control",
+                "type": "ControlData",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "Vertical force on tires",
+                "type": "VectorDouble",
+                "unit": ""
+            }
+        ],
+        "library": "Dynamics_TwoTrack",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Inertia force vector",
+                "type": "VectorDouble",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "Radius of the tires",
+                "type": "double",
+                "unit": "m",
+                "value": "0.3"
+            },
+            {
+                "id": 1,
+                "title": "Tire's max. mu",
+                "type": "double",
+                "unit": "",
+                "value": "1"
+            },
+            {
+                "id": 2,
+                "title": "Tire's slide mu",
+                "type": "double",
+                "unit": "",
+                "value": "0.8"
+            },
+            {
+                "id": 3,
+                "title": "Tire's slip at max. mu",
+                "type": "double",
+                "unit": "",
+                "value": "0.1"
+            },
+            {
+                "id": 4,
+                "title": "Engine power",
+                "type": "double",
+                "unit": "W",
+                "value": "100000"
+            },
+            {
+                "id": 5,
+                "title": "Max. brake torque",
+                "type": "double",
+                "unit": "Nm",
+                "value": "-10000"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Dynamics_TwoTrack",
+        "type": "Action"
+    },
+    {
+        "id": 0,
+        "library": "EgoSensor",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "EgoPositionX",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "id": 1,
+                "title": "EgoPositionY",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "id": 2,
+                "title": "EgoVelocityX",
+                "type": "double",
+                "unit": "m/s"
+            },
+            {
+                "id": 3,
+                "title": "EgoVelocityY",
+                "type": "double",
+                "unit": "m/s"
+            },
+            {
+                "id": 4,
+                "title": "EgoVelocityAbsolute",
+                "type": "double",
+                "unit": "m/s"
+            },
+            {
+                "id": 5,
+                "title": "EgoAccelerationX",
+                "type": "double",
+                "unit": "m/s^2"
+            },
+            {
+                "id": 6,
+                "title": "EgoAccelerationY",
+                "type": "double",
+                "unit": "m/s^2"
+            },
+            {
+                "id": 12,
+                "title": "EgoYawAngle",
+                "type": "double",
+                "unit": "rad"
+            },
+            {
+                "id": 24,
+                "title": "FrictionCoeff",
+                "type": "double",
+                "unit": "1"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "EgoSensor",
+        "type": "Sensor"
+    },
+    {
+        "id": 0,
+        "library": "Init_Agent",
+        "outputs": [
+            {
+                "id": 100,
+                "title": "Trajectory",
+                "type": "Trajectory",
+                "unit": ""
+            },
+            {
+                "id": 101,
+                "title": "Weight",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "id": 102,
+                "title": "Wheelbase",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "id": 103,
+                "title": "DistanceFrontAxleToCOG",
+                "type": "double",
+                "unit": ""
+            },
+            {
+                "id": 104,
+                "title": "Width",
+                "type": "double",
+                "unit": "m"
+            },
+            {
+                "id": 105,
+                "title": "Distance to COG from Leading Edge",
+                "type": "double",
+                "unit": "m"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 0,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Init_Agent",
+        "type": "Sensor"
+    },
+    {
+        "id": 0,
+        "library": "OpenScenarioActions",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Trajectory Event",
+                "type": "TrajectoryEvent",
+                "unit": ""
+            },
+            {
+                "id": 1,
+                "title": "Custom Lane Change Event",
+                "type": "CustomLaneChangeEvent",
+                "unit": ""
+            },
+            {
+                "id": 2,
+                "title": "Gaze Follower Event",
+                "type": "GazeFollowerEvent",
+                "unit": ""
+            },
+            {
+                "id": 3,
+                "title": "Speed Action Event",
+                "type": "SpeedActionEvent",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "OpenScenarioActions",
+        "type": "Algorithm"
+    },
+    {
+        "id": 0,
+        "library": "ParametersVehicle",
+        "outputs": [
+            {
+                "id": 1,
+                "title": "Vehicle Parameters",
+                "type": "ParametersVehicleSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "ParametersVehicle",
+        "type": "Sensor"
+    },
+    {
+        "id": 0,
+        "library": "Sensor_CameraMarks",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Distance to mark",
+                "type": "double",
+                "unit": "m"
+            },
+            {
+                "id": 1,
+                "title": "Mark approach velocity",
+                "type": "double",
+                "unit": "m/s"
+            },
+            {
+                "id": 2,
+                "title": "Side of vehicle",
+                "type": "int",
+                "unit": ""
+            },
+            {
+                "id": 3,
+                "title": "Mark type",
+                "type": "int",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "OffsetX",
+                "type": "double",
+                "unit": "-1...+1",
+                "value": "0"
+            },
+            {
+                "id": 1,
+                "title": "OffsetY",
+                "type": "double",
+                "unit": "-1...+1",
+                "value": "0"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Sensor_CameraMarks",
+        "type": "Sensor"
+    },
+    {
+        "id": 0,
+        "library": "Sensor_Collision",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "CollisionOccured",
+                "type": "bool",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "penetrationTime_ms",
+                "type": "int",
+                "unit": "ms",
+                "value": "30"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 10,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Sensor_Collision",
+        "type": "Sensor"
+    },
+    {
+        "id": 0,
+        "library": "SensorDriver",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Driver Signal",
+                "type": "SensorDriverSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "SensorDriver",
+        "type": "Sensor"
+    },
+    {
+        "id": 0,
+        "library": "Geometric2D",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Sensor Data",
+                "type": "SensorDataSignal",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "Longitudinal",
+                "type": "double",
+                "unit": "m",
+                "value": ""
+            },
+            {
+                "id": 1,
+                "title": "Lateral",
+                "type": "double",
+                "unit": "m",
+                "value": ""
+            },
+            {
+                "id": 2,
+                "title": "Height",
+                "type": "double",
+                "unit": "m",
+                "value": ""
+            },
+            {
+                "id": 3,
+                "title": "Pitch",
+                "type": "double",
+                "unit": "rad",
+                "value": ""
+            },
+            {
+                "id": 4,
+                "title": "Yaw",
+                "type": "double",
+                "unit": "rad",
+                "value": ""
+            },
+            {
+                "id": 5,
+                "title": "Roll",
+                "type": "double",
+                "unit": "rad",
+                "value": ""
+            },
+            {
+                "id": 6,
+                "title": "FailureProbability",
+                "type": "double",
+                "unit": "",
+                "value": ""
+            },
+            {
+                "id": 7,
+                "title": "Latency",
+                "type": "normalDistribution",
+                "unit": "s",
+                "value": "0,0,0,0"
+            },
+            {
+                "id": 8,
+                "title": "OpeningAngleH",
+                "type": "double",
+                "unit": "rad",
+                "value": ""
+            },
+            {
+                "id": 9,
+                "title": "EnableVisualObstruction",
+                "type": "bool",
+                "unit": "",
+                "value": ""
+            },
+            {
+                "id": 10,
+                "title": "DetectionRange",
+                "type": "double",
+                "unit": "m",
+                "value": ""
+            },
+            {
+                "id": 11,
+                "title": "RequiredPercentageOfVisibileArea",
+                "type": "double",
+                "unit": "",
+                "value": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Geometric2D",
+        "type": "Sensor"
+    },
+    {
+        "id": 0,
+        "library": "Sensor_RecordState",
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "Sensor_RecordState",
+        "type": "Sensor"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "sensor signals",
+                "type": "SensorDataSignal",
+                "unit": ""
+            }
+        ],
+        "library": "SensorFusionOSI",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Sensor Fusion Signal",
+                "type": "SensorDataSignal",
+                "unit": ""
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "SensorFusionOSI",
+        "type": "Sensor"
+    },
+    {
+        "id": 0,
+        "inputs": [
+            {
+                "cardinality": 1,
+                "id": 0,
+                "title": "Input 1",
+                "type": "any",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 1,
+                "title": "Input 2",
+                "type": "any",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 2,
+                "title": "Input 3",
+                "type": "any",
+                "unit": ""
+            },
+            {
+                "cardinality": 1,
+                "id": 3,
+                "title": "Input 4",
+                "type": "any",
+                "unit": ""
+            }
+        ],
+        "library": "SignalPrioritizer",
+        "outputs": [
+            {
+                "id": 0,
+                "title": "Prioritized Signal",
+                "type": "any",
+                "unit": ""
+            }
+        ],
+        "parameters": [
+            {
+                "id": 0,
+                "title": "Priority Input 1",
+                "type": "int",
+                "unit": "",
+                "value": "1"
+            },
+            {
+                "id": 1,
+                "title": "Priority Input 2",
+                "type": "int",
+                "unit": "",
+                "value": "2"
+            },
+            {
+                "id": 2,
+                "title": "Priority Input 3",
+                "type": "int",
+                "unit": "",
+                "value": "3"
+            },
+            {
+                "id": 3,
+                "title": "Priority Input 4",
+                "type": "int",
+                "unit": "",
+                "value": "4"
+            }
+        ],
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "schedule": {
+            "cycle": 1,
+            "offset": 0,
+            "response": 0
+        },
+        "title": "SignalPrioritizer",
+        "type": "Algorithm"
+    }
+]

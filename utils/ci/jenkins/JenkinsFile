@@ -1,0 +1,81 @@
+pipeline {
+    agent {
+        docker { image 'ci-cd-unfallvorschung:latest' }
+    }
+    options {
+         skipDefaultCheckout(true)
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Clean before build
+                cleanWs()
+                dir('opgui'){
+                    script {
+                          checkout([$class: 'GitSCM', 
+                                    branches: [[name: '*/main']], 
+                                    userRemoteConfigs: [[url: 'https://gitlab.eclipse.org/arnauvazquez/opgui']]])
+                    }
+                }
+            }
+        }
+        stage('Preparation Build') {
+            steps {
+                script {
+                    sh "cp -r opgui/* $HOME/opgui/"
+                    sh """echo '{\
+                            "BACKEND_IP": "127.0.0.1",\
+                            "BACKEND_PORT": 8848,\
+                            "OPSIMULATION_EXE": "opSimulation",\
+                            "OPSIMULATION_MANAGER_EXE": "opSimulationManager",\
+                            "OPSIMULATION_MANAGER_XML": "opSimulationManager.xml",\
+                            "PATH_LOG_FILE": "/root/opgui-user/workspace1/opGuiCore.log",\
+                            "PATH_OPENPASS_CORE": "/root/opgui-user/opSimulation/bin/core",\
+                            "WORKSPACE": "/root/opgui-user/workspace1"\
+                            }' > $HOME/opgui/backend/backendConfig.json"""
+                    sh """
+                        sed -i 's/cmake -DWITH_TESTS=OFF -DWITH_DOC=ON ../cmake -DWITH_TESTS=ON -DWITH_DOC=ON ../' $HOME/opgui/installation/install-debian.sh
+                    """
+                    sh "cat $HOME/opgui/installation/install-debian.sh"
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    sh "ls -la $HOME/opgui/backend/test"
+                    sh "yarn --cwd $HOME/opgui install"
+                    sh "yarn --cwd $HOME/opgui deb-install"
+                }
+            }
+        }
+        stage('Frontend Test') {
+            steps {
+                script {
+                    sh "yarn --cwd $HOME/opgui/frontend test --coverage --silent"
+                }
+            }
+        }
+         stage('Backend Test') {
+            steps {
+                script {
+                    sh """
+                        cd $HOME/opgui/backend/build;
+                        make run_tests;
+                    """
+                }
+            }
+        }
+    }
+    post {
+        // Clean after build
+        always {
+            cleanWs(cleanWhenNotBuilt: false,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
+                               [pattern: '.propsfile', type: 'EXCLUDE']])
+        }
+    }
+}

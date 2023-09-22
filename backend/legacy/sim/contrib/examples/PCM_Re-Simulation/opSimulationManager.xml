@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opSimulationManager>
+    <logLevel>2</logLevel>
+    <logFileSimulationManager>C:/OpenPASS/bin/core/examples/PCM_Re-Simulation/result_pcm/1000232/0-0-0/Default/manager-logs/opSimulationManager.log</logFileSimulationManager>
+    <simulation>C:/OpenPASS/bin/core/opSimulation.exe</simulation>
+    <libraries>C:/OpenPASS/bin/core/modules</libraries>
+    <simulationConfigs>
+        <simulationConfig>
+            <configurations>C:/OpenPASS/bin/core/examples/PCM_Re-Simulation/result_pcm/1000232/0-0-0/Default/configs</configurations>
+            <logFileSimulation>C:/OpenPASS/bin/core/examples/PCM_Re-Simulation/result_pcm/1000232/0-0-0/Default/sim-logs/opSimulation.log</logFileSimulation>
+            <results>C:/OpenPASS/bin/core/examples/PCM_Re-Simulation/result_pcm/1000232/0-0-0/Default/results</results>
+        </simulationConfig>
+    </simulationConfigs>
+</opSimulationManager>
+
+
