@@ -1,6 +1,10 @@
 pipeline {
     agent {
-        docker { image 'ci-cd-unfallvorschung:latest' }
+        dockerfile {
+            filename 'Dockerfile'
+            dir 'utils/ci/'
+            additionalBuildArgs '--tag=ci-cd-unfallvorschung:latest'
+        }
     }
     options {
          skipDefaultCheckout(true)
